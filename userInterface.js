@@ -12,3 +12,9 @@ UserInterface.prototype.addMovieToUserInterface = function(newMovie) {
         </tr>
     `;
 };
+
+UserInterface.prototype.clearInputField = function(titleField, directorField, urlField) {
+    titleField.value = "";
+    directorField.value = "";
+    urlField.value = "";
+}
