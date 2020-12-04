@@ -32,3 +32,18 @@ UserInterface.prototype.displayMessage = function(message, type) {
         div.remove();
     }, 2000);
 };
+
+UserInterface.prototype.loadAllMovies = function(movies) {
+    const moviesList = document.getElementById("movies");
+
+    movies.forEach(function(movie) {
+        moviesList.innerHTML += `
+        <tr>
+            <td><img src="${movie.url}" class="img-fluid img-thumbnail"></td>
+            <td>${movie.title}</td>
+            <td>${movie.director}</td>
+            <td><a href="#" id = "delete-film" class = "btn btn-danger">Delete Movie</a></td>
+        </tr>
+        `
+    });
+};

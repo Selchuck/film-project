@@ -5,10 +5,16 @@ const url = document.querySelector("#url");
 
 const uI = new UserInterface();
 
+const storageData = new Storage();
+
 eventListeners();
 
 function eventListeners(){
     form.addEventListener("submit", addMovie);
+    document.addEventListener("DOMContentLoaded", function() {
+        let movies = storageData.getMoviesFromLocalStorage();
+        uI.loadAllMovies(movies);
+    });
 };
 
 function addMovie(event){
@@ -23,8 +29,12 @@ function addMovie(event){
         );
     } else {
         const newMovie = new Movie(titleValue, directorValue, urlValue);
+
         uI.addMovieToUserInterface(newMovie);
-        uI.displayMessage(`${titleValue}has been added to list successfully.`, "success");
+
+        storageData.addMovieToLocalStorage(newMovie);
+
+        uI.displayMessage(`${titleValue} has been added to list successfully.`, "success");
 
     }
 
