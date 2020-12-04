@@ -17,10 +17,15 @@ function addMovie(event){
     const urlValue = url.value;
 
     if (titleValue === "" || directorValue === "" || urlValue === ""){
-        console.log("missing input")
+        uI.displayMessage(
+            "Please fill in all the required fields to add Movie to the list below.", 
+            "danger"
+        );
     } else {
         const newMovie = new Movie(titleValue, directorValue, urlValue);
         uI.addMovieToUserInterface(newMovie);
+        uI.displayMessage(`${titleValue}has been added to list successfully.`, "success");
+
     }
 
     uI.clearInputField(title, director, url)
