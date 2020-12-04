@@ -1,7 +1,7 @@
 const form = document.getElementById("movie-form");
-const titleElement = document.querySelector("#title");
-const directorElement = document.querySelector("#director");
-const urlElement = document.querySelector("#url");
+const title = document.querySelector("#title");
+const director = document.querySelector("#director");
+const url = document.querySelector("#url");
 
 const uI = new UserInterface();
 
@@ -12,15 +12,18 @@ function eventListeners(){
 };
 
 function addMovie(event){
-    const title = titleElement.value;
-    const director = directorElement.value;
-    const url = urlElement.value;
+    const titleValue = title.value;
+    const directorValue = director.value;
+    const urlValue = url.value;
 
-    if (title === "" || director === "" || url === ""){
+    if (titleValue === "" || directorValue === "" || urlValue === ""){
         console.log("missing input")
     } else {
-        const newMovie = new Movie(title, director, url);
+        const newMovie = new Movie(titleValue, directorValue, urlValue);
         uI.addMovieToUserInterface(newMovie);
     }
+
+    uI.clearInputField(title, director, url)
+
     event.preventDefault();
 };
