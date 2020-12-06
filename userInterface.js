@@ -42,8 +42,12 @@ UserInterface.prototype.loadAllMovies = function(movies) {
             <td><img src="${movie.url}" class="img-fluid img-thumbnail"></td>
             <td>${movie.title}</td>
             <td>${movie.director}</td>
-            <td><a href="#" id = "delete-film" class = "btn btn-danger">Delete Movie</a></td>
+            <td><a href="#" id = "delete-movie" class = "btn btn-danger">Delete Movie</a></td>
         </tr>
         `
     });
 };
+
+UserInterface.prototype.deleteMovieFromUserInterface = function(movie) {
+    movie.parentElement.parentElement.remove();
+}
