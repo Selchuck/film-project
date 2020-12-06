@@ -51,3 +51,11 @@ UserInterface.prototype.loadAllMovies = function(movies) {
 UserInterface.prototype.deleteMovieFromUserInterface = function(movie) {
     movie.parentElement.parentElement.remove();
 }
+
+UserInterface.prototype.clearMovieListFromUserInterface = function() {
+    const movieList = document.getElementById("movies");
+
+    while(movieList.firstElementChild !== null) {
+        movieList.firstElementChild.remove();
+    }
+}

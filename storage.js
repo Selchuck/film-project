@@ -34,3 +34,6 @@ Storage.prototype.deleteMovieFromLocalStorage = function(movieTitle) {
     localStorage.setItem("movies", JSON.stringify(movies));
 };
 
+Storage.prototype.clearMovieListFromLocalStorage = function() {
+    localStorage.removeItem("movies");
+};

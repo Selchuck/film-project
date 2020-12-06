@@ -3,6 +3,7 @@ const title = document.querySelector("#title");
 const director = document.querySelector("#director");
 const url = document.querySelector("#url");
 const cardBody = document.querySelectorAll(".card-body")[1];
+const clearMovieListButton = document.getElementById("clear-movies");
 
 
 const uI = new UserInterface();
@@ -18,7 +19,8 @@ function eventListeners(){
         uI.loadAllMovies(movies);
     });
 
-    cardBody.addEventListener("click", deleteMovie)
+    cardBody.addEventListener("click", deleteMovie);
+    clearMovieListButton.addEventListener("click", clearMovieList);
 };
 
 function addMovie(event){
@@ -42,7 +44,7 @@ function addMovie(event){
 
     }
 
-    uI.clearInputField(title, director, url)
+    uI.clearInputField(title, director, url);
 
     event.preventDefault();
 };
@@ -58,3 +60,11 @@ function deleteMovie(event) {
         uI.displayMessage("Movie been deleted successfully", "success");
     };
 };
+
+function clearMovieList() {
+
+    if(confirm("You are about to delete you Movie List, are you sure ?")) {
+        uI.clearMovieListFromUserInterface();
+        storageData.clearMovieListFromLocalStorage();
+    } 
+}
