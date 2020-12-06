@@ -50,5 +50,11 @@ function addMovie(event){
 function deleteMovie(event) {
     if(event.target.id === "delete-movie") {
         uI.deleteMovieFromUserInterface(event.target);
+        storageData.deleteMovieFromLocalStorage(
+            event.target.parentElement
+            .previousElementSibling.previousElementSibling.textContent
+        );
+
+        uI.displayMessage("Movie been deleted successfully", "success");
     };
 };

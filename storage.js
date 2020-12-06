@@ -8,7 +8,7 @@ Storage.prototype.addMovieToLocalStorage = function(newMovie) {
     movies.push(newMovie);
 
     localStorage.setItem("movies", JSON.stringify(movies));
-}
+};
 
 Storage.prototype.getMoviesFromLocalStorage = function() {
 let movies;
@@ -20,4 +20,17 @@ let movies;
     };
 
     return movies;
-}
+};
+
+Storage.prototype.deleteMovieFromLocalStorage = function(movieTitle) {
+    let movies = this.getMoviesFromLocalStorage();
+
+    movies.forEach(function(movie, index) {
+        if(movie.title === movieTitle) {
+            movies.splice(index, 1);
+        }
+    });
+
+    localStorage.setItem("movies", JSON.stringify(movies));
+};
+
